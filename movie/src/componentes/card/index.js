@@ -1,39 +1,36 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {cardStyle} from './cardStyle';
-import axios from "axios";
-import  {PREMIERES} from "../../config";
+import { useHistory } from "react-router-dom"
 
-export default function Cards ({image, description}) {
+
+
+
+export default function Cards (props) {
     const classes = cardStyle();
-   
-    useEffect(()=>{
-        const getData = async() => {
-            const {data} = await axios.get(PREMIERES, {
-                    description:"",
-                    image:"",
-             
-            })
-            
-            console.log(data);
-        };
-        getData();
-    }, []);
+    const history = useHistory();
+    const handleMovie =() => {
+        history.push("/",{
+            imageMovies: props.image,
+            descriptionMovies: props.description
+        })
+    }
 
     return(
-        <Card className={classes.root}>
+
+            <Card className={classes.root} onClick={handleMovie}>
             <div className={classes.details}>
                 <CardContent className={classes.content}>
-                    <CardMedia
+                    <img
                         className={classes.cover}
-                        image={image}
+                        src={props.imageMovies}
                         title=""
                     />
                     <Typography component="h5" variant="h5">
-                        Género:{description}
+                        Género:{props.descriptionMovies}
                     </Typography>
 
                 </CardContent>
@@ -41,4 +38,7 @@ export default function Cards ({image, description}) {
       
         </Card>
     )
+
+        
+    
 } 

@@ -15,7 +15,9 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import EmailIcon from '@material-ui/icons/Email';
 import { useHistory } from "react-router-dom";
-
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {firebaseConfig} from "../../firebase/firebaseConfig";
 
 export default function Login () {
     const classes = loginStyle();
@@ -29,8 +31,8 @@ export default function Login () {
         setOpen(false);
         
     };
-    const [values, setValues] = React.useState({
-    
+    const [values, setValues] = useState({
+        email:'',
         password: '',
         
     });
@@ -46,6 +48,19 @@ export default function Login () {
       const handleMouseDownPassword = (event) => {
         event.preventDefault();
       };
+
+      const login = () => {
+        console.log("1", firebaseConfig)
+        const app = initializeApp(firebaseConfig);
+        const provider = new GoogleAuthProvider();
+        const auth = getAuth();
+        signInWithPopup(auth,provider).then(result => {
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+        })
+      }
       
     
     return(
@@ -127,7 +142,7 @@ export default function Login () {
         </FormControl>
         </div>
         <div className={classes.Btn2}>
-        <Button onClick={handleClickOpen} className={classes.loginButton2}>
+        <Button onClick={handleClickOpen} className={classes.loginButton2} onClick={login}>
           INICIAR SESIÓN
         </Button>
         <Button onClick={()=> {history.push('/dulceria')}} className={classes.loginButton2}>
