@@ -1,10 +1,11 @@
 import React from "react";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+import { Grid } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import {cardStyle} from './cardStyle';
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
+
 
 
 
@@ -20,25 +21,29 @@ export default function Cards (props) {
     }
 
     return(
-
-            <Card className={classes.root} onClick={handleMovie}>
+        <Grid container  className={classes.container}>
+            <Card className={classes.root}>
             <div className={classes.details}>
                 <CardContent className={classes.content}>
-                    <img
-                        className={classes.cover}
-                        src={props.imageMovies}
-                        title=""
-                    />
-                    <Typography component="h5" variant="h5">
-                        Género:{props.descriptionMovies}
+                    <div className={classes.imagenBox}>
+                        <img
+                            className={classes.cover}
+                            src={props.imageMovies}
+                            title=""
+                        />
+                    </div>
+                    <div className={classes.textBox}>
+                    <Typography component="h5" variant="h5" className={classes.textGenero}>
+                        Género: {props.descriptionMovies}
                     </Typography>
+                    </div>
 
                 </CardContent>
             </div>
       
-        </Card>
+            </Card>
+       </Grid>
     )
-
         
     
 } 

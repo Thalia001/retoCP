@@ -2,8 +2,11 @@ import React, {useEffect, useState} from "react";
 import Cards from "../../componentes/card";
 import axios from "axios";
 import {PREMIERES} from "../../config"
+import { Grid } from "@material-ui/core";
+
 
 export default function Home (props) {
+
     const [allDataMovie, setAllDataMovie] = useState([]);
 
     useEffect(()=>{
@@ -20,6 +23,7 @@ export default function Home (props) {
     return(
         <>
             {allDataMovie.map((movie) => (
+
                 <Cards imageMovies={movie.image} descriptionMovies={movie.description}{...props}/>
             ))}
    

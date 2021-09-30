@@ -23,7 +23,9 @@ export default function Header () {
                         <Link to={{pathname:"/dulceria"}} variant="h6" className={classes.title}>
                             DULCERIA 
                         </Link>
-                        <AppLoginPopup/>
+                        <Link to={{pathname:"/inicia-sesion"}} variant="h6" className={classes.title}>
+                            INICIA SESION 
+                        </Link>
                     </Toolbar>
                 </AppBar>
             </div>
