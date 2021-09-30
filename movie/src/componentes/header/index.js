@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import { headerStyle } from './headerStyle';
 import logo from '../../img/logomovie.png';
 import { Link } from "react-router-dom";
+import AppLoginPopup from "../login";
 
 export default function Header () {
     const classes = headerStyle();
@@ -22,7 +23,7 @@ export default function Header () {
                         <Link to={{pathname:"/dulceria"}} variant="h6" className={classes.title}>
                             DULCERIA 
                         </Link>
-                        <Button className={classes.btnLogin}>Inicia Sesión</Button>
+                        <AppLoginPopup/>
                     </Toolbar>
                 </AppBar>
             </div>
