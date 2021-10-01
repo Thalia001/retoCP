@@ -4,6 +4,7 @@ import Home from "./pages/home";
 import Dulceria from "./pages/dulceria";
 import Pago from "./pages/pago";
 import Header from "./componentes/header";
+import Login from "./pages/login/login";
 
 const App = () => {
   return(
@@ -13,8 +14,8 @@ const App = () => {
         <Route path="/" exact>
           <Home/>
         </Route>
-        <Route path="/inicia-sesion" exact>
-          <Home/>
+        <Route path="/inicia-sesion">
+          <Login/>
         </Route>
         <Route path="/dulceria">
           <Dulceria/>

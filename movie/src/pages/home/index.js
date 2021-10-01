@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import Cards from "../../componentes/card";
 import axios from "axios";
-import {PREMIERES} from "../../config"
-import { Grid } from "@material-ui/core";
+import {PREMIERES} from "../../config";
+import { useHistory } from "react-router-dom";
+
 
 
 export default function Home (props) {
-
+    let history = useHistory();
     const [allDataMovie, setAllDataMovie] = useState([]);
 
     useEffect(()=>{
@@ -22,11 +23,12 @@ export default function Home (props) {
 
     return(
         <>
+            <div style={{width:"100%", display:"inline"}}>
             {allDataMovie.map((movie) => (
 
-                <Cards imageMovies={movie.image} descriptionMovies={movie.description}{...props}/>
+                <Cards imageMovies={movie.image} descriptionMovies={movie.description}{...props} />
             ))}
-   
+            </div>
             
         </>
     )

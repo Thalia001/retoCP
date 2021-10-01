@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core";
 export const headerStyle = makeStyles((theme) => ({
     root: {
         background:"#100515",
-        flexGrow: 1,
     },
     menu: {
         display:"flex",
@@ -17,7 +16,6 @@ export const headerStyle = makeStyles((theme) => ({
         padding:"20px"
     },
     title: {
-        flexGrow: 1,
         cursor:"pointer",
         textDecoration: "none",
         fontSize:"20px",
@@ -28,6 +26,8 @@ export const headerStyle = makeStyles((theme) => ({
         background:"#100515",
     },
     items:{
+        display:"flex",
+        justifyContent:"space-around",
         paddingLeft: "70px",
         paddingRight: "70px",
     },

@@ -1,10 +1,8 @@
 import React,{useState} from "react";
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from "@material-ui/core/DialogContent";
+
 import Typography from '@material-ui/core/Typography';
 import { loginStyle } from './loginStyle';
-import logo from '../../img/logomovie.png';
+import logogoogle from '../../img/logogoogle.png';
 import clsx from 'clsx';
 import IconButton from '@material-ui/core/IconButton';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -18,6 +16,7 @@ import { useHistory } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import {firebaseConfig} from "../../firebase/firebaseConfig";
+import { Button } from "@material-ui/core";
 
 export default function Login () {
     const classes = loginStyle();
@@ -64,29 +63,24 @@ export default function Login () {
       
     
     return(
-        <div>
-        
-        <Dialog onClose={handleClose} open={open}>
-          <DialogContent dividers>
-            <div className={classes.menu}>
-                <img src={logo} className={classes.logo}/>
-            </div>
+        <div className={classes.root}>
+          <div>
             <Typography
             variant="h2"
             component="h5"
             gutterBottom
             className={classes.loginTitle}
             style={{
-              fontSize: "20px",
-              fontWeight: 500,
+              fontSize: "30px",
+              fontWeight: 900,
               lineHeight: "23.7px",
               color: "black",
-              marginBottom: "5px",
+              marginBottom: "15px",
               textAlign:"center",
               padding:"20px 0 0 0",
             }}
           >
-            Bienvenido a Movie
+            Bienvenido a MOVIE
           </Typography>
           <Typography
               variant="h2"
@@ -140,16 +134,32 @@ export default function Login () {
         </FormControl>
         </div>
         <div className={classes.Btn2}>
-        <Button onClick={handleClickOpen} className={classes.loginButton2} onClick={login}>
+        <Button onClick={handleClickOpen} className={classes.loginButton2}>
           INICIAR SESIÓN
         </Button>
         <Button onClick={()=> {history.push('/dulceria')}} className={classes.loginButton2}>
           INVITADO
         </Button>
         </div>
-          </DialogContent>
+        <div className={classes.btn3}>
+          <Typography
+              variant="h2"
+              component="span"
+              gutterBottom
+              className={classes.termsText}
+              style={{ fontSize: "16px"}}
+            >
+            Inicia Sesión con  
+          </Typography>
+        </div>
+        <div className={classes.btn3}>
+          <Button >
+            <img src={logogoogle} width="30px" style={{cursor:"pointer"}}/>
+          </Button>
+        
+        </div>
+        </div>
       
-        </Dialog>
       </div>
     )
 } 

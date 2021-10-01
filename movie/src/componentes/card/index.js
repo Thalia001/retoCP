@@ -1,7 +1,7 @@
 import React from "react";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import { Grid } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import {cardStyle} from './cardStyle';
 import { useHistory } from "react-router-dom";
@@ -21,7 +21,7 @@ export default function Cards (props) {
     }
 
     return(
-        <Grid container  className={classes.container}>
+        <Button container  className={classes.container} onClick={()=> {history.push('/inicia-sesion')}}>
             <Card className={classes.root}>
             <div className={classes.details}>
                 <CardContent className={classes.content}>
@@ -42,7 +42,7 @@ export default function Cards (props) {
             </div>
       
             </Card>
-       </Grid>
+       </Button>
     )
         
     
