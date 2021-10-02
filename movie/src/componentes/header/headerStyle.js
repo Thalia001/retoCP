@@ -37,6 +37,33 @@ export const headerStyle = makeStyles((theme) => ({
         fontSize:"20px",
         color:"white",
         fontFamily: "'Ubuntu', sans-serif",
+    },
+    menu3:{
+        display:"flex",
+        justifyContent:"center",
+        padding:"10px",
+    },
+    iconCart:{
+        width:"35px",
+        height:"35px",
+        color:"white",
+    },
+    itemTOtal:{
+        color: "white",
+        position:"relative",
+        top:"-1em",
+        right:"1.5rem",
+        width:"1.5rem",
+        height:"1.5rem",
+        border:"1px solid red",
+        borderRadius:"50%",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        padding:"0rem",
+        fontSize:"1.3rem",
+        fontWeight: "500",
+        background:"red",
     }
    
 }))

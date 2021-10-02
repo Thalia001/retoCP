@@ -1,16 +1,33 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent'
+import CardContent from '@material-ui/core/CardContent';
+import clsx from "clsx";
 import Typography from '@material-ui/core/Typography';
 import {candyStyle} from './productStyle';
 import { useHistory } from "react-router-dom";
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
-import {InputBase} from "@material-ui/core";
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+import CheckIcon from "@material-ui/icons/Check";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import {
+  CircularProgress,
+  Button,
+} from "@material-ui/core";
+import { DataContext } from "../context/DataProvider";
 
-export default function CardsProducts(props) {
+
+export default function CardsProducts(props, {name}) {
+
+    const [loading, setLoading] = useState(false);
+    const [added, setAdded] = useState(false);
+
     const classes = candyStyle();
     const history = useHistory();
+
+
+    // const submit = async () => {
+    //   setLoading(true);
+    //   setLoading(false);
+    //   setAdded(true);
+    // };
     const handleProduct = () => {
         history.push("/", {
             imageProduct:props.name,
@@ -18,6 +35,9 @@ export default function CardsProducts(props) {
             precioProduct:props.price
         })
     }
+
+    const value = useContext(DataContext);
+    const addCarrito = value.addCarrito;
    
   
     return (
@@ -34,23 +54,50 @@ export default function CardsProducts(props) {
                 Combo : {props.comboProduct}
               </Typography>
               <Typography variant="h5" component="p"className={classes.textGenero}>
-                Precio : {props.precioProduct}
+                Precio : S/ {props.precioProduct}
               </Typography>
             </div>
           </CardContent>
         </div>
-        {/* <div className={classes.pago}>
-              <span className={classes.cantidad}>
-                  <RemoveCircleIcon className={classes.icon}/>
-              </span>
-              <div>
-                <InputBase className={classes.cantidad}/>
-                <span>0</span>
-              </div>
-              <span className={classes.cantidad}>
-                  <AddCircleIcon className={classes.icon}/>
-              </span>
-        </div> */}
+        <div className={classes.boxButton}>
+          <Button
+          variant="contained"
+          className={clsx(
+            classes.addToCartButton,
+            classes.addToCartColor
+          )}
+          onClick={() => addCarrito(name)}
+          >
+            {added ? (
+                    <CheckIcon
+                      style={{
+                        height: "22px",
+                        width: "22px",
+                        color: "#FFF",
+                        marginRight: "15px",
+                        fontSize:"14px",
+                      }}
+                    />
+                  ) : (
+                    <ShoppingBasketIcon className={classes.buttonIcons} />
+                  )}
+                   Agregar al carrito
+                   {loading ? (
+                    <CircularProgress
+                      style={{
+                        height: "15px",
+                        width: "15px",
+                        color: "red",
+                        marginLeft: "20px",
+                      }}
+                    />
+                  ): (
+                    ""
+                  )}
+          </Button>
+
+        </div>
+     
         
       </Card>
     )

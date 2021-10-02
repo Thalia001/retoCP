@@ -97,7 +97,7 @@ export default function Login () {
             id={"email"}
             type={"text"}
             value={values.email}
-            onChange={handleChange}
+            onChange={handleChange('email')}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton

@@ -93,7 +93,7 @@ export const loginStyle = makeStyles((theme) => ({
             outlineColor: '#8F53F7',
         }
     },
-    label: {
+     label: {
         fontSize: '14px',
         fontWeight: 400,
         lineHeight: '16.59px',
